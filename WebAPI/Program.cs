@@ -1,8 +1,12 @@
+using Autofac;
 using Autofac.Core;
+using Autofac.Extensions.DependencyInjection;
 using Business.Abstract;
 using Business.Concrete;
+using Business.DependencyResolvers.Autofac;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
+using Microsoft.AspNetCore.Hosting;
 
 internal class Program
 {
@@ -13,8 +17,13 @@ internal class Program
         // Add services to the container.
 
         builder.Services.AddControllers();
-        builder.Services.AddSingleton<IProductService, ProductManager>();
-        builder.Services.AddSingleton<IProductDal, EfProductDal>();
+        builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
+       .ConfigureContainer<ContainerBuilder>(builder =>
+       {
+           builder.RegisterModule(new AutofacBusinessModule());
+       });
+        //builder.Services.AddSingleton<IProductService, ProductManager>();
+        //builder.Services.AddSingleton<IProductDal, EfProductDal>();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
@@ -36,5 +45,6 @@ internal class Program
 
         app.Run();
     }
+    
 
 }
