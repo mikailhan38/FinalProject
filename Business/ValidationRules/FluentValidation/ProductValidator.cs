@@ -1,4 +1,6 @@
-﻿using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
+﻿using Business.Constans;
+using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
+using Core.Utilities.Results;
 using Entities.Concrete;
 using FluentValidation;
 using System;
@@ -18,6 +20,8 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(p=>p.UnitPrice).NotEmpty();
             RuleFor(p=>p.UnitPrice).GreaterThan(0);
             RuleFor(p => p.ProductName).Must(StartWithA).WithMessage("Ürün isimleri A harfi ile başlamalı");
+           
+            
         }
 
         private bool StartWithA(string arg)
