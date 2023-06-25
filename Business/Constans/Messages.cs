@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,5 +17,12 @@ namespace Business.Constans
         public static string ProductUpdated = "Ürün Güncellemesi Başarılı";
         public static string ProductNameAlreadyExists="Aynı isimde zaten bir ürün var";
         public static string CategoryLimitExceded="Kategori limiti 15 ile sınırlıdır.";
+        public static string AuthorizationDenied="YETKİNİZ YOK";
+        public static string UserRegistered="Kullanıcı kaydedildi.";
+        public static string UserNotFound="Kullanıcı Bulunamadı";
+        public static string PasswordError = "Parola Hatalı";
+        public static string SuccessfulLogin="Giriş Başarılı";
+        public static string UserAlreadyExists="Kullanıcı Adı Zaten Var";
+        public static string AccessTokenCreated="Token Başarılı";
     }
 }
