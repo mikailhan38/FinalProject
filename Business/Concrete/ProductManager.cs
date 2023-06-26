@@ -42,7 +42,7 @@ namespace Business.Concrete
             _productDal.Add(product);
             return new Result(true, Messages.ProductAdded);
         }
-
+        [SecuredOperation("product.list,admin")]
         public IDataResult<List<Product>> GetAll()
         {
             //if (DateTime.Now.Hour==01)
